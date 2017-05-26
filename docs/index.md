@@ -12,9 +12,9 @@ We built tf-seq2seq with the following goals in mind:
 
 - **Usability**: You can train a model with a single command. Several types of input data are supported, including standard raw text.
 
-- **Reproducibility**: Training pipelines and models are configured using YAML files. This allows other to run your exact same model configurations.
+- **Reproducibility**: Training pipelines and models are configured using YAML files. This allows others to run your exact same model configurations.
 
-- **Extensibility**: Code is structured in a modular way and that easy to build upon. For example, adding a new type of attention mechanism or encoder architecture requires only minimal code changes.
+- **Extensibility**: Code is structured in a modular way and that's easy to build upon. For example, adding a new type of attention mechanism or encoder architecture requires only minimal code changes.
 
 - **Documentation**: All code is documented using standard Python docstrings, and we have written guides to help you get started with common tasks.
 

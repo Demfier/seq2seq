@@ -27,10 +27,9 @@ An encoder reads in "source data", e.g. a sequence of words or an image, and pro
 
 ## Decoder
 
-A decoder is a generative model that is conditioned on the representation created by the encoder. For example, a Recurrent Neural Network decoder may learn generate the translation for an encoded sentence in another language. For a list of available decoder, see the [Decoder Reference](decoders/).
+A decoder is a generative model that is conditioned on the representation created by the encoder. For example, a Recurrent Neural Network decoder may learn to generate the translation for an encoded sentence in another language. For a list of available decoder, see the [Decoder Reference](decoders/).
 
 
 ## Model
 
-A model defines how to put together an encoder and decoder, and how to calculate and minize the loss functions. It also handles the necessary preprocessing of data read from an input pipeline. Under the hood, each model is implemented as a [model_fn passed to a tf.contrib.learn Estimator](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/Estimator). For a list of available models, see the [Models Reference](models/).
-
+A model defines how to put together an encoder and decoder, and how to calculate and minimize the loss functions. It also handles the necessary preprocessing of data read from an input pipeline. Under the hood, each model is implemented as a [model_fn passed to a tf.contrib.learn Estimator](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/Estimator). For a list of available models, see the [Models Reference](models/).

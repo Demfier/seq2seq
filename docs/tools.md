@@ -20,7 +20,7 @@ To run training on characters you must pass set `source_delimiter` and `target_d
 
 ## Visualizing Beam Search
 
-If you use the `DumpBeams` inference task (see [Inference](inference/) for more details) you can inspect the beam search data by loading the array using numpy, or generate beam search visualizations using the `generate_beam_viz.py` script. This required the `networkx` module to be installed.
+If you use the `DumpBeams` inference task (see [Inference](inference/) for more details) you can inspect the beam search data by loading the array using numpy, or generate beam search visualizations using the `generate_beam_viz.py` script. This requires the `networkx` module to be installed.
 
 ```
 python -m bin.tools.generate_beam_viz  \

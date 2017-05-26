@@ -39,7 +39,7 @@ An encoder that pools over embeddings, as described in [https://arxiv.org/abs/16
 | --- | --- | --- |
 | `pooling_fn` | `tensorflow.layers.average_pooling1d` | The 1-d pooling function to use, e.g. `tensorflow.layers.average_pooling1d`. |
 | `pool_size` | `5` | The pooling window, passed as `pool_size` to the pooling function. |
-| `strides` | `1` | The stride during pooling, passed as `strides` the pooling function. |
+| `strides` | `1` | The stride during pooling, passed as `strides` to the pooling function. |
 | `position_embeddings.enable` | `True` | If true, add position embeddings to the inputs before pooling. |
 | `position_embeddings.combiner_fn` | `tensorflow.add` | Function used to combine the position embeddings with the inputs. For example, `tensorflow.add`. |
 | `position_embeddings.num_positions` | `100` | Size of the position embedding matrix. This should be set to the maximum sequence length of the inputs. |
@@ -56,5 +56,3 @@ hidden layer before the logits as the feature representation.
 | --- | --- | --- |
 | `resize_height` | `299` | Resize the image to this height before feeding it into the convolutional network. |
 | `resize_width` | `299` | Resize the image to this width before feeding it into the convolutional network. |
-
-

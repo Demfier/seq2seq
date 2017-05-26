@@ -91,7 +91,7 @@ export TRAIN_STEPS=1000000
 
 ## Alternative: Generate Toy Data
 
-Training on real-world translation data can take a very long time. If you do not have access to a machine with a GPU but would like to play around with a smaller dataset, we provide a way to generate toy data. The following command will generate a dataset where the target sequences are reversed source sequences. That is, the model needs to learn the reverse the inputs.  While this task is not very useful in practice, we can train such a model quickly and use it as as sanity-check to make sure that the end-to-end pipeline is working as intended.
+Training on real-world translation data can take a very long time. If you do not have access to a machine with a GPU but would like to play around with a smaller dataset, we provide a way to generate toy data. The following command will generate a dataset where the target sequences are reversed source sequences. That is, the model needs to learn the reverse of the inputs.  While this task is not very useful in practice, we can train such a model quickly and use it as as sanity-check to make sure that the end-to-end pipeline is working as intended.
 
 ```
 DATA_TYPE=reverse ./bin/data/toy.sh
