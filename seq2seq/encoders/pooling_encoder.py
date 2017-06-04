@@ -42,12 +42,12 @@ def position_encoding(sentence_size, embedding_size):
     the fixed position encodings for each sentence position.
   """
   encoding = np.ones((sentence_size, embedding_size), dtype=np.float32)
-  ls = sentence_size + 1
-  le = embedding_size + 1
-  for k in range(1, le):
-    for j in range(1, ls):
-      encoding[j-1, k-1] = (1.0 - j/float(ls)) - (
-          k / float(le)) * (1. - 2. * j/float(ls))
+  len_s = sentence_size + 1
+  len_e = embedding_size + 1
+  for k in range(1, len_e):
+    for j in range(1, len_s):
+      encoding[j-1, k-1] = (1.0 - j/float(len_s)) - (
+          k / float(len_e)) * (1. - 2. * j/float(len_s))
   return encoding
 
 
@@ -120,7 +120,7 @@ class PoolingEncoder(Encoder):
         "strides": 1,
         "position_embeddings.enable": True,
         "position_embeddings.combiner_fn": "tensorflow.multiply",
-        "position_embeddings.num_positions": 100,
+        "position_embeddings.num_positions": 100
     }
 
   def encode(self, inputs, sequence_length):

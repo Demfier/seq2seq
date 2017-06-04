@@ -22,8 +22,6 @@ from __future__ import unicode_literals
 
 import tensorflow as tf
 
-from seq2seq import graph_utils
-from seq2seq.data import vocab
 from seq2seq.graph_utils import templatemethod
 from seq2seq.models.model_base import ModelBase
 from seq2seq.models.attention_seq2seq import AttentionSeq2Seq
@@ -69,49 +67,3 @@ class Image2Seq(AttentionSeq2Seq):
 
   def batch_size(self, features, _labels):
     return tf.shape(features["image"])[0]
-
-  def _preprocess(self, features, labels):
-    """Model-specific preprocessing for features and labels:
-
-    - Creates vocabulary lookup tables for target vocab
-    - Converts tokens into vocabulary ids
-    - Prepends a speical "SEQUENCE_START" token to the target
-    - Appends a speical "SEQUENCE_END" token to the target
-    """
-
-    # Create vocabulary look for target
-    target_vocab_to_id, target_id_to_vocab, target_word_to_count, _ = \
-      vocab.create_vocabulary_lookup_table(self.target_vocab_info.path)
-
-    # Add vocab tables to graph colection so that we can access them in
-    # other places.
-    graph_utils.add_dict_to_collection({
-        "target_vocab_to_id": target_vocab_to_id,
-        "target_id_to_vocab": target_id_to_vocab,
-        "target_word_to_count": target_word_to_count
-    }, "vocab_tables")
-
-    if labels is None:
-      return features, None
-
-    labels = labels.copy()
-
-    # Slices targets to max length
-    if self.params["target.max_seq_len"] is not None:
-      labels["target_tokens"] = labels["target_tokens"][:, :self.params[
-          "target.max_seq_len"]]
-      labels["target_len"] = tf.minimum(labels["target_len"],
-                                        self.params["target.max_seq_len"])
-
-    # Look up the target ids in the vocabulary
-    labels["target_ids"] = target_vocab_to_id.lookup(labels["target_tokens"])
-
-    labels["target_len"] = tf.to_int32(labels["target_len"])
-    tf.summary.histogram("target_len", tf.to_float(labels["target_len"]))
-
-    # Add to graph collection for later use
-    graph_utils.add_dict_to_collection(features, "features")
-    if labels:
-      graph_utils.add_dict_to_collection(labels, "labels")
-
-    return features, labels

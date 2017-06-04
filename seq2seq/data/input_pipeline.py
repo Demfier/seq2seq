@@ -157,7 +157,7 @@ class ParallelTextInputPipeline(InputPipeline):
         items_to_descriptions={})
 
     dataset_target = None
-    if len(self.params["target_files"]) > 0:
+    if self.params["target_files"]:
       decoder_target = split_tokens_decoder.SplitTokensDecoder(
           tokens_feature_name="target_tokens",
           length_feature_name="target_len",

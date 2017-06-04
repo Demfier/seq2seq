@@ -32,8 +32,7 @@ def _unpack_cell(cell):
   expects a list of cells, one per layer."""
   if isinstance(cell, tf.contrib.rnn.MultiRNNCell):
     return cell._cells  #pylint: disable=W0212
-  else:
-    return [cell]
+  return [cell]
 
 
 def _default_rnn_cell_params():

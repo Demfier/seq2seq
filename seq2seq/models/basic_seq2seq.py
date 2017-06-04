@@ -120,6 +120,5 @@ class BasicSeq2Seq(Seq2SeqModel):
     if self.mode == tf.contrib.learn.ModeKeys.INFER:
       return self._decode_infer(decoder, bridge, encoder_output, features,
                                 labels)
-    else:
-      return self._decode_train(decoder, bridge, encoder_output, features,
-                                labels)
+    return self._decode_train(decoder, bridge, encoder_output, features,
+                              labels)

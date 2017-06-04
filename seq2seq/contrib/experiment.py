@@ -23,6 +23,7 @@ class Experiment(tf.contrib.learn.Experiment):
   sharing issues."""
 
   def __init__(self, train_steps_per_iteration=None, *args, **kwargs):
+    """Sets number of training steps per iteration"""
     super(Experiment, self).__init__(*args, **kwargs)
     self._train_steps_per_iteration = train_steps_per_iteration
 

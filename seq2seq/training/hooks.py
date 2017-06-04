@@ -23,7 +23,6 @@ from __future__ import unicode_literals
 import abc
 import os
 
-import numpy as np
 import six
 import yaml
 
@@ -97,10 +96,9 @@ class MetadataCaptureHook(TrainingHook):
       return
     if not self._active:
       return tf.train.SessionRunArgs(self._global_step)
-    else:
-      tf.logging.info("Performing full trace on next step.")
-      run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE) #pylint: disable=E1101
-      return tf.train.SessionRunArgs(self._global_step, options=run_options)
+    tf.logging.info("Performing full trace on next step.")
+    run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE) #pylint: disable=E1101
+    return tf.train.SessionRunArgs(self._global_step, options=run_options)
 
   def after_run(self, _run_context, run_values):
     if not self.is_chief or self._done:

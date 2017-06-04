@@ -66,7 +66,7 @@ class ConvEncoder(Encoder):
         "output_cnn.layers": 5,
         "position_embeddings.enable": True,
         "position_embeddings.combiner_fn": "tensorflow.multiply",
-        "position_embeddings.num_positions": 100,
+        "position_embeddings.num_positions": 100
     }
 
   def encode(self, inputs, sequence_length):

@@ -55,7 +55,7 @@ def _split_into_words(sentences):
 def _get_word_ngrams(n, sentences):
   """Calculates word n-grams for multiple sentences.
   """
-  assert len(sentences) > 0
+  assert sentences
   assert n > 0
 
   words = _split_into_words(sentences)
@@ -126,12 +126,11 @@ def _recon_lcs(x, y):
     """private recon calculation"""
     if i == 0 or j == 0:
       return []
-    elif x[i - 1] == y[j - 1]:
+    if x[i - 1] == y[j - 1]:
       return _recon(i - 1, j - 1) + [(x[i - 1], i)]
-    elif table[i - 1, j] > table[i, j - 1]:
+    if table[i - 1, j] > table[i, j - 1]:
       return _recon(i - 1, j)
-    else:
-      return _recon(i, j - 1)
+    return _recon(i, j - 1)
 
   recon_tuple = tuple(map(lambda x: x[0], _recon(i, j)))
   return recon_tuple
